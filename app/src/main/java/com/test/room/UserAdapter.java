@@ -1,18 +1,19 @@
 package com.test.room;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 
 class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
-    ArrayList<String> users;
+    ArrayList<User> users;
 
-    public UserAdapter(ArrayList<String> users) {
+    public UserAdapter(ArrayList<User> users) {
         this.users = users;
     }
 
@@ -25,7 +26,9 @@ class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull UserAdapter.ViewHolder viewHolder, int i) {
-        viewHolder.firstName.setText(users.get(i));
+        viewHolder.firstName.setText(users.get(i).getFirstName());
+        viewHolder.lastName.setText(users.get(i).getLastName());
+        viewHolder.email.setText(users.get(i).getEmail());
     }
     //to get size of array
     @Override
@@ -35,9 +38,13 @@ class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView firstName;
+        public TextView lastName;
+        public TextView email;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             firstName = itemView.findViewById(R.id.first_name);
+            lastName = itemView.findViewById(R.id.last_name);
+            email = itemView.findViewById(R.id.email);
         }
     }
 }
