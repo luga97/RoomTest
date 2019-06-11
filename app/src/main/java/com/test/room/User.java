@@ -1,12 +1,14 @@
 package com.test.room;
 
+import androidx.room.*;
+
+@Entity
 public class User {
+    @PrimaryKey(autoGenerate = true)
     private int id;
     private String firstName;
     private String lastName;
     private String email;
-
-
 
     public User(String firstName, String lastName, String email) {
         this.firstName = firstName;
